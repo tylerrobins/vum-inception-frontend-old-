@@ -1,0 +1,162 @@
+<%- include('header.ejs') -%>
+    <link rel="stylesheet" href="/css/inception.css">
+    <title>INCEPTION</title>
+
+    <body>
+        <div id="all-quesiton-container" class="all-question-container">
+            <div class="header-container">
+                <img id="santamLogo" src="imgs/SANTAM-LOGO-WEB.png" alt="Santam Logo">
+                <h1>Emerging Business Insurance</h1>
+                <hr>
+            </div>
+            <form id="inception-form">
+                <!-- Get clients personal infomation -->
+                <div id="page1" class="question-container active">
+                    <div id="question1">
+                        <label for="first_name">What is your first name?</label>
+                        <input type="text" name="first_name" id="first_name" required>
+                    </div>
+                    <div id="question2">
+                        <label for="last_name">What is your last name?</label>
+                        <input type="text" name="last_name" id="last_name" required>
+                    </div>
+                    <div id="question3">
+                        <label for="cell_number">What is your cell number?</label>
+                        <input type="tel" pattern="\+?\d*" name="cell_number" id="cell_number" required>
+                    </div>                    
+                    <label>Are you a South African Citizen?</label>
+                    <div class="single-select-checkbox" id="question4">
+                        <input type="radio" id="sa_citizen" name="citizenship" value="sa_citizen">
+                        <label for="sa_citizen">Yes</label>
+                        <input type="radio" id="foreign_citizen" name="citizenship" value="foreign_citizen">
+                        <label for="foreign_citizen">No</label>
+                    </div>
+                    <div id="question5">
+                        <label for="id_number" id="id_number_label">What is your ID number?</label>
+                        <input type="text" inputmode="numeric" pattern="\d*" name="id_number" id="id_number" required>
+                    </div>                    
+                </div>
+
+                <!-- business informaiton -->
+                <div id="page2" class="question-container">
+                    <div>
+                        <label for="business_name">What is your business name?</label>
+                        <input type="text" name="business_name" id="business_name" required>
+                    </div>
+                    <div>
+                        <label for="business_address">What is your business address?</label>
+                        <input type="text" name="business_address" id="business_address" required>
+                    </div>
+                    <div>
+                        <label for="business_activity">What is your business activity?</label>
+                        <select select name="business_activity" id="business_activity">
+                            <option value="" selected disabled>Select your business activity</option>
+                            <% for(var i=0; i<businessActivity.length; i++) { %>
+                                <option value="<%=businessActivity[i]%>">
+                                    <%=businessActivity[i]%>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Policy information -->
+                <div id="page3" class="question-container">
+                    <div>
+                        <label for="cover_option">Please select a cover option</label>
+                        <button id="cover_options_btn" class="link-style-button">Cover Options Info</button>
+                        <select select name="cover_option" id="cover_option" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="Starter">Starter</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="inception_date">When would you like your policy to start?</label>
+                        <select name="inception_date" id="inception_date" required>
+                            <option value="" selected disabled>Select an Inception Date</option>
+                            <option value="<%- currentDate %>"><%- currentDate %></option>
+                            <option value="<%- tomorrowDate %>"><%- tomorrowDate %></option>
+                            <option value="<%- firstNextMonth %>"><%- firstNextMonth %></option>
+                        </select>
+                    </div>
+                    <div class="device-info">
+                        <label for="device_make">What is the make of your cell phone you want to insure?</label>
+                        <input type="text" name="device_make" id="device_make">
+                    </div>
+                    <div class="device-info">
+                        <label for="device_model">What is the model of your cell phone you want to insure?</label>
+                        <input type="text" name="device_model" id="device_model">
+                    </div>
+                </div>
+            </form>
+            <div class="btn-container">
+                <button id="prev_btn">Previous</button>
+                <button id="next_btn">Next</button>
+                <button id="submit_btn">Submit</button>
+            </div>
+            <div class="cover-options-modal">
+                <div class="cover-options-modal-content">
+                    <div class="option_div">
+                        <i class="option_play fi fi-rs-angle-circle-right"></i>
+                        <div class="option_name" id="starter_option">Starter</div>
+                        <div class="option_price">R75 monthly</div>
+                        <div class="option_desc">Congratulations, you have taken the exciting first step. This cover
+                            option will protect your business as you grow.</div>
+                    </div>
+                    <div class="option_div">
+                        <i class="option_play fi fi-rs-angle-circle-right"></i>
+                        <div class="option_name">Standard</div>
+                        <div class="option_price">R125 monthly</div>
+                        <div class="option_desc">You are ready for some wider cover for your important business assets.
+                        </div>
+                    </div>
+                    <div class="option_div">
+                        <i class="option_play fi fi-rs-angle-circle-right"></i>
+                        <div class="option_name">Premium</div>
+                        <div class="option_price">R195 monthly</div>
+                        <div class="option_desc">You are owning it, well done. This cover option will ensure peace of
+                            mind as you navigate the world of commerce.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cover-options-modal" class="cover-options-modal">
+            <div class="cover-options-modal-content">
+                <div class="option_div">
+                    <h1 class="option-name" id="starter_option">Starter</h1>
+                    <h2 class="option-price">R75 monthly</h2>
+                    <ul class="option-desc">
+                        <li>Stock and Contents: R30 000</li>
+                        <li>Personal Accident: R25 000</li>
+                        <li>Political Riot: R500 000</li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="option_div">
+                    <h1 class="option-name">Standard</h1>
+                    <h2 class="option-price">R125 monthly</h2>
+                    <ul class="option-desc">
+                        <li>Stock and Contents: R50 000</li>
+                        <li>Personal Accident: R25 000</li>
+                        <li>Cell phone cover: R2 500</li>
+                        <li>Political Riot: R500 000</li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="option_div">
+                    <h1 class="option-name">Premium</h1>
+                    <h2 class="option-price">R195 monthly</h2>
+                    <ul class="option-desc">
+                        <li>Stock and Contents: R100 000</li>
+                        <li>Personal Accident: R50 000</li>
+                        <li>Cell phone cover: R5 000</li>
+                        <li>Political Riot: R500 000</li>
+                    </ul>
+                </div>
+                <button id="cover-options-modal-close-btn">Close</button>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/inceptionForm.js"></script>
+    </body>
