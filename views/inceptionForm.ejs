@@ -21,9 +21,8 @@
                         <input type="text" name="last_name" id="last_name" required>
                     </div>
                     <div id="question3">
-                        <label for="cell_number">What is your cell number?</label>
-                        <input type="tel" pattern="\+?\d*" name="cell_number" id="cell_number" required>
-                    </div>                    
+                        <input type="tel" pattern="\+?\d*" name="cell_number" id="cell_number" value="<%= cellNumber %>" hidden>
+                    </div>
                     <label>Are you a South African Citizen?</label>
                     <div class="single-select-checkbox" id="question4">
                         <input type="radio" id="sa_citizen" name="citizenship" value="sa_citizen">
