@@ -1,0 +1,18 @@
+<%- include('header.ejs') -%>
+    <link rel="stylesheet" href="/css/businessActivity.css">
+    <title>Business Activities</title>
+
+    <form action="/inceptionOptions" method="get">
+        <div>
+            <label for="business_activity">What is your business activity?</label>
+            <select select name="business_activity" id="business_activity">
+                <option value="" selected disabled>Select your business activity</option>
+                <% for(let i=0; i<businessActivity.length; i++) { %>
+                    <option value="<%=businessActivity[i]%>">
+                        <%=businessActivity[i]%>
+                    </option>
+                    <% } %>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>

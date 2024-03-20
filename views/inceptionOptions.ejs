@@ -1,0 +1,21 @@
+<%- include('header.ejs') -%>
+    <link rel="stylesheet" href="/css/businessActivity.css">
+    <title>Business Activities</title>
+
+    <h1>TEST</h1>
+    <hr>
+    <hr>
+    <button>COMPARE OPTIONS</button>
+    <hr>
+    <% for (const [key, value] of Object.entries(coverOptionsOnSelection)) { %>
+        <button> <%= value.name.toUpperCase() %> </button>
+        <hr>
+        <div class="coverOptionsModal" id="<%= key %>">
+            <div class="coverOptionsModalContent">
+                <% for (const [key1, value1] of Object.entries(value)) { %>
+                    <p><%= key1 %>: <%= value1 %></p>
+                <% } %>
+        </div>
+    <% } %>
+
+    </div>
