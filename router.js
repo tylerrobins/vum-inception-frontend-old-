@@ -38,4 +38,10 @@ router.get('/inception', (req, res) => {
       );
 });
 
+router.get('/test', (req, res) => {
+  res.render(
+    'testBusinessActivity_and_coverOptions',
+  )
+});
+
 module.exports = router;
